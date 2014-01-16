@@ -48,6 +48,11 @@ class Geocoded extends AbstractResult implements ResultInterface
     /**
      * @var string
      */
+    protected $cityId = null;
+
+    /**
+     * @var string
+     */
     protected $city = null;
 
     /**
@@ -146,6 +151,13 @@ class Geocoded extends AbstractResult implements ResultInterface
         return $this->city;
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    public function getCityId()
+    {
+        return $this->cityId;
+    }
     /**
      * {@inheritDoc}
      */
@@ -252,6 +264,10 @@ class Geocoded extends AbstractResult implements ResultInterface
             $this->city = $this->formatString($data['city']);
         }
 
+        if (isset($data['city_id'])) {
+            $this->cityId = $this->formatString($data['city_id']);
+        }
+
         if (isset($data['zipcode'])) {
             $this->zipcode = (string) $data['zipcode'];
         }
@@ -302,6 +318,7 @@ class Geocoded extends AbstractResult implements ResultInterface
             'streetName'    => $this->streetName,
             'zipcode'       => $this->zipcode,
             'city'          => $this->city,
+            'cityId'        => $this->cityId,
             'cityDistrict'  => $this->cityDistrict,
             'county'        => $this->county,
             'countyCode'    => $this->countyCode,
