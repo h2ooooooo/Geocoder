@@ -74,6 +74,13 @@ interface ResultInterface
     public function getCity();
 
     /**
+     * Returns one city identify.
+     *
+     * @return string
+     */
+    public function getCityId();
+
+    /**
      * Returns the zipcode value.
      *
      * @return string
