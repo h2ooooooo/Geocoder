@@ -21,34 +21,34 @@ use GuzzleHttp\Client;
  */
 class GuzzleHttpAdapter implements HttpAdapterInterface
 {
-	/**
-	 * @var ClientInterface
-	 */
-	protected $client;
+    /**
+     * @var ClientInterface
+     */
+    protected $client;
 
-	/**
-	 * @param ClientInterface $client Client object
-	 */
-	public function __construct(ClientInterface $client = null)
-	{
-		$this->client = null === $client ? new Client() : $client;
-	}
+    /**
+     * @param ClientInterface $client Client object
+     */
+    public function __construct(ClientInterface $client = null)
+    {
+        $this->client = null === $client ? new Client() : $client;
+    }
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public function getContent($url)
-	{
-		$response = $this->client->get($url);
+    /**
+     * {@inheritDoc}
+     */
+    public function getContent($url)
+    {
+        $response = $this->client->get($url);
 
-		return (string) $response->getBody();
-	}
+        return (string) $response->getBody();
+    }
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public function getName()
-	{
-		return 'guzzle';
-	}
+    /**
+     * {@inheritDoc}
+     */
+    public function getName()
+    {
+        return 'guzzle';
+    }
 }
